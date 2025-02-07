@@ -52,7 +52,7 @@
       // Observador (watch)
       watch(terminoBusqueda, (nuevoTermino) => {
         if (nuevoTermino.length > 3) {
-          resultados.value = [nuevoTermino, "Resultado 1", "Resultado 2"];
+          resultados.value = [nuevoTermino, "¿Esa es la palabra que quieres buscar?", " ¿Seguro?"];
         } else {
           resultados.value = [];
         }
