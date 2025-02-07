@@ -6,33 +6,21 @@
 <script>
 import { ref } from "vue";
 import Nav from "./components/Nav.vue";
-import ComponenteNay from "./components/ComponenteNay.vue"; 
 
 export default {
   name: "App",
+  components: { Nav }, 
   setup() {
     // Definir datos reactivos usando ref
     const titulo = ref("Aplicación de Ejemplo en Vue 3");
-    //script nay
-    const mostrarChat = ref(false);
-    const irAlChat = () => {
-      mostrarChat.value = true; 
-      //fin script nay
-    };
 
     // Devolver los datos y funciones al template
     return {
       titulo,
-      mostrarChat,
-      irAlChat,
     };
   },
-  components: { Nav }, // Registrar componentes
 };
-
-
 </script>
-
 <style>
 /* Estilos generales */
 
