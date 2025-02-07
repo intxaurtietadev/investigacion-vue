@@ -1,7 +1,7 @@
 <template>
     <div class="container">
       <!-- Interpolación -->
-      <h2>{{ titulo }}</h2>
+      <h2>{{  titulo }}</h2>
   
       <!-- Propiedad computada -->
       <p>Nombre completo: {{ nombreCompleto }}</p>
@@ -96,6 +96,7 @@
   h2 {
     color: #333;
     text-align: center;
+
   }
   
   /* Estilo para el mensaje condicional */

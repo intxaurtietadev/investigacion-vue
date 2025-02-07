@@ -1,44 +1,36 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import HomeView from '../views/HomeView.vue'; // Importa la vista principal
 
-
+// Crea el enrutador
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(import.meta.env.BASE_URL), // Usa historial del navegador
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: HomeView,
+      path: '/', // Ruta raíz
+      name: 'home', // Nombre de la ruta
+      component: HomeView, // Componente asociado
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue'),
-    },
-    {
-      path: '/thais',
+      path: '/thais', // Ruta para Thais
       name: 'thais',
       component: () => import('../views/Thais.vue'), // Lazy-loading
     },
     {
-      path: '/nay',
+      path: '/nay', // Ruta para Nay
       name: 'nay',
       component: () => import('../views/Nay.vue'), // Lazy-loading
     },
     {
-      path: '/carla',
+      path: '/carla', // Ruta para Carla
       name: 'carla',
       component: () => import('../views/Carla.vue'), // Lazy-loading
     },
     {
-      path: '/silvia',
+      path: '/silvia', // Ruta para Silvia
       name: 'silvia',
       component: () => import('../views/Silvia.vue'), // Lazy-loading
     },
   ],
-})
+});
 
-export default router
+export default router; // Exporta el enrutador

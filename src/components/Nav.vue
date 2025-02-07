@@ -2,15 +2,13 @@
   <div class="navbar-container">
     <nav>
       <ul class="nav-list">
-        <li><router-link to="/HomeView">Inicio</router-link></li>
+        <li><router-link to="/">Inicio</router-link></li>
         <li><router-link to="/carla">Carla</router-link></li>
         <li><router-link to="/nay">Nay</router-link></li>
-        <li><router-link to="/carla">Carla</router-link></li>
         <li><router-link to="/silvia">Silvia</router-link></li>
+        <li><router-link to="/thais">Thais</router-link></li>
       </ul>
     </nav>
-
-    <!--<RouterView />-->
   </div>
 </template>
 
@@ -51,6 +49,7 @@ nav {
 }
 
 .nav-list li a:hover {
-  color: #ffe681; 
+  color: #f7e189; 
+  font-weight: 800;
 }
 </style>

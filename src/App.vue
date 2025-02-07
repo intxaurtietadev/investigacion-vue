@@ -1,19 +1,10 @@
 <template>
-  <div id="app">
-    <!-- Barra de navegación -->
     <Nav />
-
-    <!-- Contenido principal -->
-    <main class="main-content">
-      <h1>{{ titulo }}</h1>
-      <ComponenteThais />
-    </main>
-  </div>
+      <router-view />
 </template>
 
 <script>
 import { ref } from "vue";
-import ComponenteThais from "./components/ComponenteThais.vue";
 import Nav from "./components/Nav.vue";
 
 export default {
@@ -27,7 +18,7 @@ export default {
       titulo,
     };
   },
-  components: { ComponenteThais, Nav }, // Registrar componentes
+  components: { Nav }, // Registrar componentes
 };
 </script>
 
