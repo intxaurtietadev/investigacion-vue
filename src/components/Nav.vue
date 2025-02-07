@@ -2,11 +2,15 @@
   <div class="navbar-container">
     <nav>
       <ul class="nav-list">
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Acerca de</a></li>
-        <li><a href="#">Contacto</a></li>
+        <li><router-link to="/HomeView">Inicio</router-link></li>
+        <li><router-link to="/carla">Carla</router-link></li>
+        <li><router-link to="/nay">Nay</router-link></li>
+        <li><router-link to="/carla">Carla</router-link></li>
+        <li><router-link to="/silvia">Silvia</router-link></li>
       </ul>
     </nav>
+
+    <!--<RouterView />-->
   </div>
 </template>
 
