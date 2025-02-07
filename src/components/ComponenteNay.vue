@@ -49,7 +49,9 @@ export default {
       "42": "Mirale, ha visto pelis antiguas, friiiikiii 🤓",
       "muerete": "Obligame prro",
       "bu": "uy k chusto",
-
+      "puta": "Zorra, guarra malparia 🖕",
+      "imbecil": "Lavate esa boca, guarro",
+      "gilipollas": "Hazme un favor y muerete🖕",
     };
 
     const iniciarSesion = () => {
