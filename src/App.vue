@@ -1,12 +1,16 @@
 <template>
   <div id="app">
-    <!-- Barra de navegación -->
+    
     <Nav />
 
-    <!-- Contenido principal -->
     <main class="main-content">
       <h1>{{ titulo }}</h1>
+
       <ComponenteThais />
+
+      <button @click="irAlChat">🎮Click to play🎮</button>
+      
+      <ComponenteNay v-if="mostrarChat" />
     </main>
   </div>
 </template>
@@ -15,20 +19,31 @@
 import { ref } from "vue";
 import ComponenteThais from "./components/ComponenteThais.vue";
 import Nav from "./components/Nav.vue";
+import ComponenteNay from "./components/ComponenteNay.vue"; 
 
 export default {
   name: "App",
   setup() {
     // Definir datos reactivos usando ref
     const titulo = ref("Aplicación de Ejemplo en Vue 3");
+    //script nay
+    const mostrarChat = ref(false);
+    const irAlChat = () => {
+      mostrarChat.value = true; 
+      //fin script nay
+    };
 
     // Devolver los datos y funciones al template
     return {
       titulo,
+      mostrarChat,
+      irAlChat,
     };
   },
-  components: { ComponenteThais, Nav }, // Registrar componentes
+  components: { ComponenteThais, Nav,  ComponenteNay}, // Registrar componentes
 };
+
+
 </script>
 
 <style>
