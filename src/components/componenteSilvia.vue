@@ -145,15 +145,7 @@ ul ul {
   content: "📁";
   color: #333;
 }
-.folder::before {
-  content: "";
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background-image: url('/ruta-a-tu-imagen/carpeta-amarilla.png'); /* Cambia la ruta */
-  background-size: cover;
-  margin-right: 8px;
-}
+
 .folder:hover {
   background-color: rgba(200, 200, 200, 0.2);
 }
