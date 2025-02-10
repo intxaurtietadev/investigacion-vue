@@ -2,7 +2,6 @@
   <div id="app">
     <!-- Barra de navegación -->
     <Nav />
-
     <!-- Contenido principal -->
     <main class="main-content">
       <h1>{{ titulo }}</h1>
@@ -19,11 +18,12 @@ import Nav from "../components/Nav.vue";
 
 export default {
     name: "App",
-  components: { ComponenteSilvia, Nav }, 
-  };
-    setup() {
-      const titulo = ref("Directorio raiz en Vue");
-      
+  components: { ComponenteSilvia, Nav },
+ 
+    setup(){
+
+  const titulo = ref("Directorio raiz en Vue");
+
   //inicio carpetas cerradas
       const openFolders = ref({
       node_modules: false,
@@ -45,7 +45,7 @@ export default {
         openFolders, 
         toggleFolder
       };
-
+    },
   };
   </script>
 
