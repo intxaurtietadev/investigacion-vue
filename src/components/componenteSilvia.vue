@@ -169,7 +169,7 @@ ul ul {
 /* Estilo para que las carpetas cerradas sean amarillas */
 .folder::before {
   content: "📁";
-  color: #e7a30b; /* Color amarillo típico de carpetas */
+  color: #e7a30b !important;
   font-size: 1.2em;
 }
 
