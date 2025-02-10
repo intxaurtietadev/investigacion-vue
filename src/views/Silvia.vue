@@ -13,7 +13,7 @@
 
 <script>
 import { ref } from "vue";
-import ComponenteSilvia from "../components/ComponenteSilvia.vue";
+import ComponenteSilvia from "../components/componenteSilvia.vue";
 import Nav from "../components/Nav.vue";
 
 export default {
@@ -24,6 +24,7 @@ export default {
 
   const titulo = ref("Directorio raiz en Vue");
 
+  
   //inicio carpetas cerradas
       const openFolders = ref({
       node_modules: false,
