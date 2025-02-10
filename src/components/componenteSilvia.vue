@@ -85,7 +85,7 @@
 
 <script>
 import { ref } from "vue";
-
+name:"componenteSilvia";
 export default {
   setup() {
     // Todas las carpetas inician cerradas
