@@ -139,11 +139,14 @@ ul ul {
   display: flex;
   align-items: center;
   padding: 5px;
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.2s;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #333;
 }
 
 .folder:hover {
-  background-color: #e0f2e9;
+  background-color: rgba(200, 200, 200, 0.2);
 }
 
 .folder span {
@@ -153,12 +156,21 @@ ul ul {
 
 /* 📁 cambia a 📂 cuando la carpeta está abierta */
 .folder .open::before {
-  content: "📂";
+  content: "📂"; /* Cambia el icono cuando se abre */
+  color: #e7a30b; /* Amarillo anaranjado tipo carpeta */
 }
 
 /* Estilos para archivos */
 .nested li {
   margin-left: 15px;
-  color: #333;
+  color: #444;
 }
+
+/* Estilo para que las carpetas cerradas sean amarillas */
+.folder::before {
+  content: "📁";
+  color: #e7a30b; /* Color amarillo típico de carpetas */
+  font-size: 1.2em;
+}
+
 </style>
