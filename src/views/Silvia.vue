@@ -18,7 +18,7 @@ import Nav from "../components/Nav.vue";
 
 export default {
     name: "App",
-  components: { ComponenteSilvia, Nav },
+  components: { ComponenteSilvia, Nav},
  
     setup(){
 
