@@ -22,5 +22,17 @@
     "start-server-and-test": "^2.0.10",
     "vite": "^6.0.11",
     "vite-plugin-vue-devtools": "^7.7.0"
-  }
+  },
+  "description": "This template should help get you started developing with Vue 3 in Vite.",
+  "main": "cypress.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/intxaurtietadev/investigacion-vue.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/intxaurtietadev/investigacion-vue/issues"
+  },
+  "homepage": "https://github.com/intxaurtietadev/investigacion-vue#readme"
 }

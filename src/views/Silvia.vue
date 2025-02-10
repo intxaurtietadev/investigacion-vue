@@ -1,6 +1,73 @@
 <template>
-    <div>
-      <h1>Página de Silvia</h1>
-      <p>Contenido relacionado con Silvia.</p>
-    </div>
-  </template>
+  <div id="app">
+    <!-- Barra de navegación -->
+    <Nav />
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+      <h1>{{ titulo }}</h1>
+      <ComponenteSilvia />
+      <router-view />
+    </main>
+  </div>
+</template>
+
+<script>
+import { ref } from "vue";
+import ComponenteSilvia from "../components/ComponenteSilvia.vue";
+import Nav from "../components/Nav.vue";
+
+export default {
+    name: "App",
+  components: { ComponenteSilvia, Nav }, 
+  };
+    setup() {
+      const titulo = ref("Directorio raiz en Vue");
+      
+  //inicio carpetas cerradas
+      const openFolders = ref({
+      node_modules: false,
+      public: false,
+      src: false,
+      assets: false,
+      components: false,
+      router: false,
+      views: false
+    });
+
+ // Función para alternar el estado de las carpetas
+    const toggleFolder = (folder) => {
+      openFolders.value[folder] = !openFolders.value[folder];
+    };
+
+      // Devolver los datos y funciones al template
+      return {
+        openFolders, 
+        toggleFolder
+      };
+
+  };
+  </script>
+
+
+
+
+
+<style>
+  /* Estilos generales */
+  h1{
+    text-align: center;
+  }
+  #app {
+    font-family: Arial, sans-serif;
+    margin: 0 auto; /* Elimina el margen externo */
+    padding: 0; /* Elimina el relleno externo */
+    box-sizing: border-box;
+  }
+  
+  /* Estilo para el contenido principal */
+  .main-content {
+    padding-top: 60px; /* Espacio para evitar que el contenido quede debajo de la barra de navegación */
+    margin: 20px;
+  }
+  </style>
