@@ -121,7 +121,7 @@ export default {
 }
 
 h2 {
-  color: #42b983;
+  color:black;
   text-align: center;
 }
 
@@ -142,9 +142,18 @@ ul ul {
   transition: background 0.3s, transform 0.2s;
   border-radius: 5px;
   font-weight: bold;
+  content: "📁";
   color: #333;
 }
-
+.folder::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-image: url('/ruta-a-tu-imagen/carpeta-amarilla.png'); /* Cambia la ruta */
+  background-size: cover;
+  margin-right: 8px;
+}
 .folder:hover {
   background-color: rgba(200, 200, 200, 0.2);
 }
@@ -152,6 +161,8 @@ ul ul {
 .folder span {
   margin-right: 8px;
   transition: transform 0.3s ease;
+  content: "📁";
+  color: #e7a30b !important;
 }
 
 /* 📁 cambia a 📂 cuando la carpeta está abierta */
