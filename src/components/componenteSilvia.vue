@@ -87,9 +87,6 @@
 import { ref } from "vue";
 
 export default {
-  name: "app",
- 
-
   setup() {
     // Todas las carpetas inician cerradas
     const openFolders = ref({
@@ -107,7 +104,8 @@ export default {
       openFolders.value[folder] = !openFolders.value[folder];
     };
 
-    return { openFolders, toggleFolder };
+    return { openFolders,
+       toggleFolder };
   }
 };
 </script>
