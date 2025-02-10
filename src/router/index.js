@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import HomeView from '../views/HomeView.vue'; // Importa la vista principal
+import HomeView from '../views/contadorCypress.vue'; // Importa la vista principal
 
 // Crea el enrutador
 const router = createRouter({

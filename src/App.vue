@@ -1,53 +1,25 @@
 <template>
+  <div id="app">
     <Nav />
-      <router-view v-if="mostrarContenido" class="main-content"/>
 
-        <!-- Sección de ejemplo para Cypress -->
-        <div id="ejemplo-cypress">
-        <h1>{{ titulo }}</h1>
-    <button @click="handleClick">Haz clic aquí</button>
-    <span>{{ message }}</span>
-  </div>
-
+  <router-view></router-view>
+</div>
 </template>
 
 <script>
 import { ref } from "vue";
 import Nav from "./components/Nav.vue";
 
+
 export default {
   name: "App",
   components: { Nav }, 
   setup() {
-    // Definir datos reactivos usando ref
-    const titulo = ref("Bienvenido a Vue ");
-    const mensajes = [
-      "",
-      "Has hecho clic",
-      "¡Otro clic!",
-      "Sigues aquí...",
-      "Interesante, ¿eh?",
-      "¿Cuántos más harás?",
-      "Para de hacer clic",
-      "¡No hagas clic!",
-      "¡YA BASTA!",
-      "no vas a parar, ¿verdad?"
-    ];
-    const mostrarContenido = ref(false); //para que no salga el contenido del router
 
-    let indice = 0; // Índice del mensaje actual
-    const message = ref(mensajes[indice]); // Mensaje inicial
-    // Método para manejar el clic
-    const handleClick = () => {
-      indice = (indice + 1) % mensajes.length;
-      message.value = mensajes[indice];
-    };
+    const mostrarContenido = ref(false); //para que no salga el contenido del router
 
     // Devolver los datos y funciones al template
     return {
-      titulo,
-      message,
-      handleClick,
       mostrarContenido
     };
   },
