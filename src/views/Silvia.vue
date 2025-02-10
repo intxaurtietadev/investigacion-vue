@@ -41,7 +41,7 @@ export default {
       openFolders.value[folder] = !openFolders.value[folder];
     };
 
-      // Devolver los datos y funciones al template
+    
       return {
         openFolders, 
         toggleFolder
