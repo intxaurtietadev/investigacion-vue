@@ -88,7 +88,7 @@ import { ref } from "vue";
 
 export default {
   name: "app",
-  component:"componenteSilvia",
+ 
 
   setup() {
     // Todas las carpetas inician cerradas
