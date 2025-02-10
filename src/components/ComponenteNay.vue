@@ -1,39 +1,41 @@
 <template>
     <div class="nay-container">
       <!-- Login de Usuario -->
-      <div v-if="!usuarioLogueado" class="login-container">
+      <div v-if="!usuarioLogueado" class="login-container"> <!-- esta condicion define que si no hay usuario, se vera lo de abajo--> 
         <h2>Cargando.....</h2>
-        <input v-model="nombreUsuario" placeholder="Insert ticket" />
-        <button @click="iniciarSesion">Go</button>
+        <input v-model="nombreUsuario" placeholder="Insert ticket" /> 
+        <button @click="iniciarSesion">Go</button> <!-- Este v-on al darle activa la funcion de inicio de sesion -->
       </div>
   
       <!-- Chat de la Máquina -->
-      <div v-if="usuarioLogueado">
+      <div v-if="usuarioLogueado"> <!-- en cambio si lo hay aparecera lo de aqui-->
         <h2>🤖Hello Stupid Human🤖</h2>
   
         <!-- Mostrar mensajes -->
-        <div v-for="(mensaje, index) in chat" :key="index" :class="['mensaje', mensaje.tipo]">
-          {{ mensaje.texto }}
+        <div v-for="(mensaje, index) in chat" :key="index" :class="['mensaje', mensaje.tipo]"> <!--Iteracion sobre el array chat-->
+          {{ mensaje.texto }} <!--Aqui vamos agregando los mensajes al historial, por cada iteracion-->
         </div>
   
         <!-- Input y botón para enviar mensajes -->
         <input v-model="mensajeUsuario" placeholder="Pon algo..." />
-        <button @click="enviarMensaje">Enviar</button>
+        <button @click="enviarMensaje">Enviar</button> <!-- Este v-on activa la funcion de enviarMensaje-->
       </div>
     </div>
   </template>
 
 <script>
-import { ref } from "vue";
+// Importamos ref de Vue, que nos permite crear variables reactivas.
+import { ref } from "vue"; //Si cambia el calor de la variable vue actualiza la interfaz.
 
 export default {
-  name: "Nay",
+  name: "ComponenteNay", //exportamos el componente.
+  //variables reactivas
   setup() {
-    const nombreUsuario = ref("");  // Nombre del usuario
-    const mensajeUsuario = ref(""); // Mensaje del usuario
-    const chat = ref([]);           // Conversación
-    const usuarioLogueado = ref(false); // Estado de login
-
+    const nombreUsuario = ref("");  // Guarda el Nombre del usuario
+    const mensajeUsuario = ref(""); //Guarda el Mensaje del usuario
+    const chat = ref([]);           // Para el historial de chat
+    const usuarioLogueado = ref(false); // Estado de login, se vuelve true al loguearse
+//variable de respuestas predefinidas
     const respuestas = {
       "hola": "!How you doing¡😊",
       "kaixo": "Idiomas querida",
@@ -52,32 +54,36 @@ export default {
       "puta": "Zorra, guarra malparia 🖕",
       "imbecil": "Lavate esa boca, guarro",
       "gilipollas": "Hazme un favor y muerete🖕",
+      "como estas": "Mal, la vida es una mierda",
     };
-
+//funcion para iniciar sesion
     const iniciarSesion = () => {
       if (nombreUsuario.value.trim()) {
-        usuarioLogueado.value = true;
+        usuarioLogueado.value = true; //si existe un valor de usuario agregado cambia a true y pushea el texto.
         chat.value.push({ texto: `¡Vamos, ${nombreUsuario.value} pon algo!.`, tipo: "maquina" });
-        nombreUsuario.value = "";  // Limpiar campo de nombre después de iniciar sesión
+        nombreUsuario.value = "";  // Limpia el campo de nombre después de iniciar sesión
       } else {
-        alert("Ticket please");
+        alert("Ticket please"); //si no agrega nada en el input sacara un alert
       }
     };
-
+//funcion de enviar mensaje
     const enviarMensaje = () => {
       if (mensajeUsuario.value.trim()) {
         // Agregar mensaje del usuario
-        chat.value.push({ texto: mensajeUsuario.value, tipo: "usuario" });
+        chat.value.push({ texto: mensajeUsuario.value, tipo: "usuario" }); //aqui ya definimos el tipo de mensaje y el texto para agregarlo al historial.
 
         // Convertir input a minúsculas y buscar respuesta
         let inputLimpio = mensajeUsuario.value.toLowerCase();
-        let respuesta = respuestas[inputLimpio] || "Explicate pesao";
+        let respuesta = respuestas[inputLimpio] || "Explicate humano"; //busca la respuesta predefinida o lanza un mensaje si no la tiene
 
         // Agregar respuesta de la máquina
-        chat.value.push({ texto: respuesta, tipo: "maquina" });
+        chat.value.push({ texto: respuesta, tipo: "maquina" }); //define el tipo de maquina para agregarlo al historial.
 
         // Limpiar input
-        mensajeUsuario.value = "";
+        mensajeUsuario.value = ""; //una vez buscada la respuesta limpiamos el valor de input para volver a escribir.
+      }
+      else{
+        alert("No es tan dificil, ESCRIBE");
       }
     };
 

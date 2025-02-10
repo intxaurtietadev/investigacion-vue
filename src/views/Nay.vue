@@ -7,11 +7,12 @@
     <main class="main-content">
       <h1>{{ titulo }}</h1>
       <ComponenteNay />
-      <router-view />
+      <router-view /> <!--elemento especial de Vue que tiene que ver con el enrutamiento (routing) y no necesita ser registrada -->
     </main>
   </div>
 </template>
 <script>
+//importamos todos los componentes necesarios
 import { ref } from "vue";
 import ComponenteNay from "../components/ComponenteNay.vue";
 import Nav from "../components/Nav.vue";
@@ -22,18 +23,10 @@ export default {
 
   setup() {
     // Definir datos reactivos usando ref
-    const titulo = ref("Welcome to Hell 👹");
-    const mostrarChat = ref(false);
+    const titulo = ref("😈Welcome to Skynet😈");
 
-    const irAlChat = () => {
-      mostrarChat.value = true;
-    };
-
-    // Devolver los datos y funciones al template
     return {
       titulo,
-      mostrarChat,
-      irAlChat,
     };
   }
 };
@@ -46,14 +39,14 @@ h1{
 }
 #app {
   font-family: Arial, sans-serif;
-  margin: 0 auto; /* Elimina el margen externo */
-  padding: 0; /* Elimina el relleno externo */
+  margin: 0 auto; 
+  padding: 0; 
   box-sizing: border-box;
 }
 
 /* Estilo para el contenido principal */
 .main-content {
-  padding-top: 60px; /* Espacio para evitar que el contenido quede debajo de la barra de navegación */
+  padding-top: 60px; 
   margin: 20px;
 }
 </style>
