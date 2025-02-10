@@ -118,10 +118,16 @@ export default {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   max-width: 450px;
   font-family: Arial, sans-serif;
+  margin: 0 auto; /* Centra el componente horizontalmente */
+  display: flex; /* Usa Flexbox */
+  flex-direction: column; /* Asegura que los elementos se acomoden en columna */
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
+  height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
 }
 
 h2 {
-  color:black;
+  color: black;
   text-align: center;
 }
 
@@ -135,6 +141,7 @@ ul ul {
 }
 
 .folder {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -142,7 +149,6 @@ ul ul {
   transition: background 0.3s, transform 0.2s;
   border-radius: 5px;
   font-weight: bold;
-  content: "📁";
   color: #333;
 }
 
@@ -157,23 +163,19 @@ ul ul {
   color: #e7a30b !important;
 }
 
-/* 📁 cambia a 📂 cuando la carpeta está abierta */
 .folder .open::before {
-  content: "📂"; /* Cambia el icono cuando se abre */
-  color: #e7a30b; /* Amarillo anaranjado tipo carpeta */
+  content: "📂";
+  color: #e7a30b;
 }
 
-/* Estilos para archivos */
 .nested li {
   margin-left: 15px;
   color: #444;
 }
 
-/* Estilo para que las carpetas cerradas sean amarillas */
 .folder::before {
   content: "📁";
   color: #e7a30b !important;
   font-size: 1.2em;
 }
-
 </style>
