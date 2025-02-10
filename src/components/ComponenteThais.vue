@@ -7,7 +7,10 @@
       <p>Nombre completo: {{ nombreCompleto }}</p>
   
       <!-- Directiva v-if -->
-      <p v-if="mostrarMensaje" class="mensaje">{{ mensaje }}</p>
+      <transition name="fade">
+        <p v-if="mostrarMensaje" class="mensaje">{{ mensaje }}</p>
+      </transition>
+
   
       <!-- Directiva v-for -->
       <ul class="lista">
@@ -158,4 +161,14 @@
   .boton:hover {
     background-color: #360c0c;
   }
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
   </style>
