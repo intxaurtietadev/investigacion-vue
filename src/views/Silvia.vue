@@ -18,13 +18,13 @@ import Nav from "../components/Nav.vue";
 
 export default {
     name: "App",
-  components: { ComponenteSilvia, Nav},
+  components:{ComponenteSilvia, Nav},
  
     setup(){
 
   const titulo = ref("Directorio raiz en Vue");
 
-  
+
   //inicio carpetas cerradas
       const openFolders = ref({
       node_modules: false,
@@ -49,10 +49,6 @@ export default {
     },
   };
   </script>
-
-
-
-
 
 <style>
   /* Estilos generales */
