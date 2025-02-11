@@ -10,8 +10,10 @@
       <transition name="fade">
         <p v-if="mostrarMensaje" class="mensaje">{{ mensaje }}</p>
       </transition>
+            <!-- Botón para cambiar mensaje -->
+            <button @click="cambiarMensaje" class="boton">{{ mensajeBoton}}</button>
 
-  
+
       <!-- Directiva v-for -->
        <h3>Lista de elementos</h3>
       <ul class="lista">
@@ -37,8 +39,6 @@
         <p v-if="resultados.length > 0">Resultados: {{ resultados.join(", ") }}</p>
       </div>
   
-      <!-- Botón para cambiar mensaje -->
-      <button @click="cambiarMensaje" class="boton">Cambiar Mensaje</button>
     </div>
   </template>
   
@@ -53,6 +53,7 @@
       const apellido = ref("");
       const mostrarMensaje = ref(true);
       const mensaje = ref("Este mensaje se muestra condicionalmente.");
+      const mensajeBoton = ref("Ocultar Mensaje");
       const elementos = ref([]);
       const terminoBusqueda = ref("");
       const resultados = ref([]);
@@ -72,7 +73,10 @@
   
       // Función para cambiar el estado del mensaje
       const cambiarMensaje = () => {
+      // Alternar el estado de mostrarMensaje
         mostrarMensaje.value = !mostrarMensaje.value;
+      // Actualizar el texto del botón según el nuevo estado
+        mensajeBoton.value = mostrarMensaje.value ? "Ocultar Mensaje" : "Ver Mensaje";
       };
   
       //Funcion para agregar elementos a los lis
@@ -104,6 +108,8 @@
         agregarElemento,
         eliminarElemento,
         nuevoElemento,
+        mensajeBoton,
+        cambiarMensaje,
       };
     },
   };
