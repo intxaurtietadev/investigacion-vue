@@ -1,7 +1,7 @@
 <template>
   <!-- Contenedor principal del componente -->
   <div class="structure-container">
-    <h2>Directorio raíz en proyecto Vue</h2>
+    <h2>Directorio raíz en proyecto Vue 😊 </h2>
     <ul>
       <!-- Cada carpeta se representa como un elemento de lista -->
       <li>
@@ -112,7 +112,7 @@ const toggleFolder = (folder) => {
 /* Estilo del contenedor principal */
 .structure-container {
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: #ddc1c18e;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   max-width: 1000px;
@@ -152,7 +152,7 @@ ul ul {
   transition: background 0.3s, transform 0.2s;
   border-radius: 5px;
   font-weight: bold;
-  color: #333;
+  color: #000000;
 }
 
 /* Efecto hover para resaltar carpetas al pasar el mouse */
@@ -162,8 +162,8 @@ ul ul {
 
 /* Espaciado entre el icono y el nombre de la carpeta */
 .folder span {
-  margin-right: 8px;
-  transition: transform 0.3s ease;
+  margin-right: 12px;
+  transition: transform 0.4s ease;
   content: "📁";
   color: #e7a30b !important;
 }
@@ -188,6 +188,6 @@ ul ul {
 .folder::before {
   content: "📁";
   color: #e7a30b !important;
-  font-size: 1.2em;
+  font-size: 2em;
 }
 </style>

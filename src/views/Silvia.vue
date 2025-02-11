@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref ,reactive} from "vue";
 import ComponenteSilvia from "../components/componenteSilvia.vue";
 import Nav from "../components/Nav.vue";
 
@@ -22,11 +22,11 @@ export default {
  
     setup(){
 
-  const titulo = ref("Directorio raiz en Vue");
+  const titulo = ref("Directorio raiz en Vue 😊");
 
 
   //inicio carpetas cerradas
-      const openFolders = ref({
+      const openFolders = reactive({
       node_modules: false,
       public: false,
       src: false,
