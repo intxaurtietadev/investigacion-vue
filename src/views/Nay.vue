@@ -7,7 +7,7 @@
     <main class="main-content">
       <h1>{{ titulo }}</h1>
 
-      <ComponenteNay :fondoColor="fondoColor" @cambiar-color="cambiarColor" />
+      <ComponenteNay :fondoColor="fondoColor" @cambiar-color="cambiarColor" /> <!--con un v-bind aplicamos el color de fondo y el v-on realiza la funcion de cambio-->
 
       <router-view /> <!--elemento especial de Vue que tiene que ver con el enrutamiento (routing) y no necesita ser registrada -->
     </main>
@@ -27,15 +27,14 @@ export default {
     // Definir datos reactivos usando ref
     const titulo = ref("😈Welcome to Skynet😈");
 
-    // Lista fija de colores
-    const colores = ["#37deb0", "#43c83f", "#c8573f", "#e84fc6"]; 
-    const colorIndex = ref(0);
-    const fondoColor = ref(colores[colorIndex.value]); 
+    const colores = ["#37deb0", "#43c83f", "#c8573f", "#e84fc6"]; // String fija de colores
+    const colorIndex = ref(0);//posicion actual de la lista
+    const fondoColor = ref(colores[colorIndex.value]); //aqui se asigna el color del fondo cuando cambia el valor de la variable.
 
-    // Función para cambiar el color (se activa con el emit del hijo)
+    // Función para cambiar el color (se activa con el emit del hijo ComponenteNay)
     const cambiarColor = () => {
-      colorIndex.value = (colorIndex.value + 1) % colores.length;
-      fondoColor.value = colores[colorIndex.value];
+      colorIndex.value = (colorIndex.value + 1) % colores.length; //Itera sobre el string de colores y lo asigna al valor de colorIndex ,suma 1 para cambair al siguiente y utiliza % modulo para volver al primero
+      fondoColor.value = colores[colorIndex.value]; //al ser reactivo, cambia cada vez que cambiamos de color
     };
 
     return {

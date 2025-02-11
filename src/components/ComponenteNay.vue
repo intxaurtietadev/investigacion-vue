@@ -19,9 +19,9 @@
         <!-- Input y botón para enviar mensajes -->
         <input v-model="mensajeUsuario" placeholder="Pon algo..." />
         <button @click="enviarMensaje">Enviar</button> <!-- Este v-on activa la funcion de enviarMensaje-->
-        <button @click="$emit('cambiar-color')">🌈Haz click🌈</button>
-      </div>
+        <button @click="$emit('cambiar-color')">🌈Haz click🌈</button> <!--este boton realiza un emit que envia al padre para realizar la funcion-->
     </div>
+  </div>
   </template>
 
 <script>
@@ -32,9 +32,9 @@ export default {
   name: "ComponenteNay", //exportamos el componente.
 
   props: {
-    fondoColor: String, // Recibe el color del padre
+    fondoColor: String, // Recibe los valores del color del padre
   },
-  emits: ["cambiar-color"], // Evento que el hijo enviará al padre
+  emits: ["cambiar-color"], // Evento que el hijo enviará al padre al dar click al boton
 
   //variables reactivas
   setup() {
