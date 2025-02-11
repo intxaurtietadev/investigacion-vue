@@ -1,27 +1,22 @@
 <template>
     <div class="component-carla">
-      <!-- Sección 1: Contador con Options API -->
+      <!-- Contador con Options API -->
       <section>
         <h2>Contador con Options API</h2>
         <p>Valor: {{ optionsCount }}</p>
         <button @click="incrementOptions">Incrementar</button>
+        <button @click="resetOptions">Restablecer</button>
       </section>
   
-      <!-- Sección 2: Contador con Composition API -->
+      <!-- Contador con Composition API -->
       <section>
         <h2>Contador con Composition API</h2>
         <p>Valor: {{ compositionCount }}</p>
         <button @click="incrementComposition">Incrementar</button>
+        <button @click="resetComposition">Restablecer</button>
       </section>
   
-      <!-- Sección 3: Estado Global con Pinia -->
-      <section>
-        <h2>Estado Global con Pinia</h2>
-        <p>Valor: {{ globalCount }}</p>
-        <button @click="incrementGlobal">Incrementar</button>
-      </section>
-  
-      <!-- Sección 4: Parámetro Dinámico -->
+      <!-- ID Dinámico -->
       <section>
         <h2>ID Dinámico</h2>
         <p>ID actual: {{ initialId }}</p>
@@ -30,42 +25,39 @@
   </template>
   
   <script setup>
-  // Importaciones necesarias
   import { ref } from "vue";
-  import { useCounterStore } from "../stores/counter"; // Ajusta la ruta según tu proyecto
   
   // Contador con Composition API
   const compositionCount = ref(0);
-  const incrementComposition = () => {
+  
+  function incrementComposition() {
     compositionCount.value++;
-  };
+  }
   
-  // Estado Global con Pinia
-  const counterStore = useCounterStore();
-  const globalCount = counterStore.count;
-  const incrementGlobal = () => {
-    counterStore.increment();
-  };
-  
-  // Propiedades
-  defineProps({
-    initialId: {
-      type: String,
-      required: true,
-    },
-  });
+  function resetComposition() {
+    compositionCount.value = 0;
+  }
   </script>
   
   <script>
   export default {
+    props: {
+      initialId: {
+        type: String,
+        required: true,
+      },
+    },
     data() {
       return {
-        optionsCount: 0, // Contador con Options API
+        optionsCount: 0,
       };
     },
     methods: {
       incrementOptions() {
-        this.optionsCount++; // Incrementa el contador
+        this.optionsCount++;
+      },
+      resetOptions() {
+        this.optionsCount = 0;
       },
     },
   };
@@ -74,7 +66,7 @@
   <style scoped>
   .component-carla {
     max-width: 600px;
-    margin: 150px auto;
+    margin: 0 auto;
     padding: 20px;
     font-family: Arial, sans-serif;
   }
@@ -84,10 +76,12 @@
     border: 1px solid #ccc;
     padding: 15px;
     border-radius: 5px;
+    background-color:#f8f8f8;
   }
   
   button {
     padding: 10px 15px;
+    margin-right: 10px;
     background-color: #681717;
     color: white;
     border: none;

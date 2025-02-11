@@ -1,24 +1,14 @@
 <template>
-     <div id="app">
-      <!-- Barra de navegación -->
-      <Nav />
-      <!-- Contenido principal -->
-      <main class="main-content">
-        <h1>Componente Carla</h1>
-        <ComponenteCarla />
-        <router-view />
-      </main>
-    </div>
+  <div class="view-carla">
+    <h1>Carla - Demostración de Conceptos</h1>
+    <ComponenteCarla :initial-id="id" />
+  </div>
 </template>
 
 <script>
-// Importaciones necesarias
-import { compute } from "vue";
-import Nav from "@/components/Nav.vue"; // Ajusta la ruta según tu proyecto
-import { ref } from "vue";
-import { useCounterStore } from "../stores/counter"; // Ajusta la ruta según tu proyecto
-import ComponenteCarla from "../components/ComponenteCarla.vue";
+import { computed } from "vue";
 import { useRoute } from "vue-router";
+import ComponenteCarla from "../components/ComponenteCarla.vue";
 
 export default {
   components: { ComponenteCarla },

@@ -21,7 +21,7 @@ const router = createRouter({
       component: () => import('../views/Nay.vue'), // Lazy-loading
     },
     {
-      path: '/carla', // Ruta para Carla
+      path: '/carla/:id?', // Ruta para Carla
       name: 'carla',
       component: () => import('../views/Carla.vue'), // Lazy-loading
     },
