@@ -7,13 +7,24 @@
       <p>Nombre completo: {{ nombreCompleto }}</p>
   
       <!-- Directiva v-if -->
-      <p v-if="mostrarMensaje" class="mensaje">{{ mensaje }}</p>
+      <transition name="fade">
+        <p v-if="mostrarMensaje" class="mensaje">{{ mensaje }}</p>
+      </transition>
+
   
       <!-- Directiva v-for -->
+       <h3>Lista de elementos</h3>
       <ul class="lista">
-        <li v-for="(elemento, indice) in elementos" :key="indice">{{ elemento }}</li>
+        <li v-for="(elemento, indice) in elementos" :key="indice" class="item">
+          {{ elemento }}
+          <button @click="eliminarElemento(indice)" class="btn-delete">Eliminar</button>
+        </li>
       </ul>
-  
+        <!-- Agregar nuevo elemento -->
+         <div class="inputs">
+          <input v-model="nuevoElemento" placeholder="Nuevo elemento" />
+          <button @click="agregarElemento" class="boton">Agregar</button>
+        </div>
       <!-- Inputs reactivos -->
       <div class="inputs">
         <input v-model="nombre" placeholder="Nombre" />
@@ -42,9 +53,10 @@
       const apellido = ref("");
       const mostrarMensaje = ref(true);
       const mensaje = ref("Este mensaje se muestra condicionalmente.");
-      const elementos = ref(["Elemento 1", "Elemento 2", "Elemento 3"]);
+      const elementos = ref([]);
       const terminoBusqueda = ref("");
       const resultados = ref([]);
+      const nuevoElemento = ref(""); // Para el input de nuevo elemento
   
       // Propiedad computada
       const nombreCompleto = computed(() => `${nombre.value} ${apellido.value}`);
@@ -63,6 +75,21 @@
         mostrarMensaje.value = !mostrarMensaje.value;
       };
   
+      //Funcion para agregar elementos a los lis
+      const agregarElemento = () => {
+        console.log("Valor de nuevoElemento:", nuevoElemento.value);
+        // comprobamos que el valor no esté vacio ni sea solo espacio
+        if (nuevoElemento.value.trim()){
+          elementos.value.push(nuevoElemento.value);
+          nuevoElemento.value = ""; //limpiar el input
+        }
+      };
+
+        //Para eliminar un elemento del li
+        const eliminarElemento = (indice) => {
+          elementos.value.splice(indice, 1); //eliminar del array
+        };
+        
       return {
         titulo,
         nombre,
@@ -74,6 +101,9 @@
         terminoBusqueda,
         resultados,
         cambiarMensaje,
+        agregarElemento,
+        eliminarElemento,
+        nuevoElemento,
       };
     },
   };
@@ -158,4 +188,28 @@
   .boton:hover {
     background-color: #360c0c;
   }
+
+  .btn-delete {
+  padding: 5px 10px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.btn-delete:hover {
+  background-color: #a71d2a;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
   </style>
