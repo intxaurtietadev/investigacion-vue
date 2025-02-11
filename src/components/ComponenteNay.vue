@@ -1,5 +1,5 @@
 <template>
-    <div class="nay-container">
+    <div class="nay-container" :style="{ backgroundColor: fondoColor }" >
       <!-- Login de Usuario -->
       <div v-if="!usuarioLogueado" class="login-container"> <!-- esta condicion define que si no hay usuario, se vera lo de abajo--> 
         <h2>Cargando.....</h2>
@@ -19,6 +19,7 @@
         <!-- Input y botón para enviar mensajes -->
         <input v-model="mensajeUsuario" placeholder="Pon algo..." />
         <button @click="enviarMensaje">Enviar</button> <!-- Este v-on activa la funcion de enviarMensaje-->
+        <button @click="$emit('cambiar-color')">🌈Haz click🌈</button>
       </div>
     </div>
   </template>
@@ -29,6 +30,12 @@ import { ref } from "vue"; //Si cambia el calor de la variable vue actualiza la 
 
 export default {
   name: "ComponenteNay", //exportamos el componente.
+
+  props: {
+    fondoColor: String, // Recibe el color del padre
+  },
+  emits: ["cambiar-color"], // Evento que el hijo enviará al padre
+
   //variables reactivas
   setup() {
     const nombreUsuario = ref("");  // Guarda el Nombre del usuario
@@ -104,6 +111,9 @@ export default {
   text-align: center;
   max-width: 600px;
   margin: auto;
+  transition: background-color 0.5s ease-in-out;
+  padding: 20px;
+  border-radius: 10px;
 }
 
 .login-container {
