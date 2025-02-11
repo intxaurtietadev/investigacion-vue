@@ -1,12 +1,16 @@
 <template>
+  <!-- Contenedor principal del componente -->
   <div class="structure-container">
     <h2>Directorio raíz en proyecto Vue</h2>
     <ul>
+      <!-- Cada carpeta se representa como un elemento de lista -->
       <li>
+        <!-- Al hacer clic, se activa la función toggleFolder para abrir/cerrar la carpeta -->
         <span @click="toggleFolder('node_modules')" class="folder">
           <span :class="{ open: openFolders.node_modules }">📁</span>
           <strong>node_modules/</strong> - Contiene todas las dependencias y paquetes instalados con npm o yarn.
         </span>
+        <!-- Lista anidada que se muestra solo si la carpeta está abierta -->
         <ul v-if="openFolders.node_modules" class="nested">
           <li>📄 Librerías del proyecto...</li>
         </ul>
@@ -83,40 +87,35 @@
   </div>
 </template>
 
-<script>
-import { ref,reactive } from "vue";
-name:"componenteSilvia";
-export default {
-  setup() {
-    // Todas las carpetas inician cerradas
-    const openFolders = reactive({
-      node_modules: false,
-      public: false,
-      src: false,
-      assets: false,
-      components: false,
-      router: false,
-      views: false
-    });
+<script setup>
+// Importamos la función `reactive` de Vue para manejar el estado de las carpetas
+import { reactive } from "vue";
 
-    // Función para alternar el estado de las carpetas
-    const toggleFolder = (folder) => {
-      openFolders.value[folder] = !openFolders.value[folder];
-    };
+// Definimos un objeto reactivo para almacenar el estado de cada carpeta (abierta o cerrada)
+const openFolders = reactive({
+  node_modules: false, // Carpeta cerrada por defecto
+  public: false,
+  src: false,
+  assets: false,
+  components: false,
+  router: false,
+  views: false,
+});
 
-    return { openFolders,
-       toggleFolder };
-  }
+// Función que cambia el estado de una carpeta entre abierta y cerrada
+const toggleFolder = (folder) => {
+  openFolders[folder] = !openFolders[folder]; // Alterna entre true y false
 };
 </script>
 
 <style scoped>
+/* Estilo del contenedor principal */
 .structure-container {
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  max-width: 450px;
+  max-width: 1000px;
   font-family: Arial, sans-serif;
   margin: 0 auto; /* Centra el componente horizontalmente */
   display: flex; /* Usa Flexbox */
@@ -126,20 +125,24 @@ export default {
   height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
 }
 
+/* Estilo del título */
 h2 {
   color: black;
   text-align: center;
 }
 
+/* Estilos generales de las listas */
 ul {
   list-style: none;
   padding-left: 10px;
 }
 
+/* Aumenta la indentación de las subcarpetas */
 ul ul {
   padding-left: 20px;
 }
 
+/* Estilo de las carpetas (elementos clickeables) */
 .folder {
   font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
   cursor: pointer;
@@ -152,10 +155,12 @@ ul ul {
   color: #333;
 }
 
+/* Efecto hover para resaltar carpetas al pasar el mouse */
 .folder:hover {
   background-color: rgba(200, 200, 200, 0.2);
 }
 
+/* Espaciado entre el icono y el nombre de la carpeta */
 .folder span {
   margin-right: 8px;
   transition: transform 0.3s ease;
@@ -163,16 +168,23 @@ ul ul {
   color: #e7a30b !important;
 }
 
+/* Icono de carpeta abierta */
 .folder .open::before {
   content: "📂";
   color: #e7a30b;
 }
 
-.nested li {
-  margin-left: 15px;
-  color: #444;
+/* Estilos de las subcarpetas */
+.nested {
+  margin-left: 20px;
 }
 
+/* Rotación de icono cuando la carpeta está abierta */
+.open {
+  transform: rotate(90deg);
+}
+
+/* Establece el icono predeterminado de las carpetas */
 .folder::before {
   content: "📁";
   color: #e7a30b !important;
