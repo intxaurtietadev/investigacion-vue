@@ -6,7 +6,9 @@
     <!-- Contenido principal -->
     <main class="main-content">
       <h1>{{ titulo }}</h1>
-      <ComponenteNay />
+
+      <ComponenteNay :fondoColor="fondoColor" @cambiar-color="cambiarColor" />
+
       <router-view /> <!--elemento especial de Vue que tiene que ver con el enrutamiento (routing) y no necesita ser registrada -->
     </main>
   </div>
@@ -25,8 +27,21 @@ export default {
     // Definir datos reactivos usando ref
     const titulo = ref("😈Welcome to Skynet😈");
 
+    // Lista fija de colores
+    const colores = ["#37deb0", "#43c83f", "#c8573f", "#e84fc6"]; 
+    const colorIndex = ref(0);
+    const fondoColor = ref(colores[colorIndex.value]); 
+
+    // Función para cambiar el color (se activa con el emit del hijo)
+    const cambiarColor = () => {
+      colorIndex.value = (colorIndex.value + 1) % colores.length;
+      fondoColor.value = colores[colorIndex.value];
+    };
+
     return {
       titulo,
+      fondoColor,
+      cambiarColor,
     };
   }
 };
