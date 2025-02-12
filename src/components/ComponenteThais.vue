@@ -15,7 +15,7 @@
 
 
       <!-- Directiva v-for -->
-       <h3>Lista de elementos</h3>
+       <h3>Lista de la compra</h3>
       <ul class="lista">
         <li v-for="(elemento, indice) in elementos" :key="indice" class="item">
           {{ elemento }}
