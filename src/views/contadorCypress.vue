@@ -6,12 +6,19 @@
     <span>{{ message }}</span>
   </div>
 
+  <ComponenteAPI />
+
 </template>
 <script>
 import { ref } from "vue";
+import ComponenteAPI from "../components/ComponenteAPI.vue";
 
 export default {
     name: "ContadorCypress",
+
+    components: {
+    ComponenteAPI, 
+  },
     setup(){
         const titulo = ref("Bienvenido a Vue ");    
         const mensajes = [
