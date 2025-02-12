@@ -44,7 +44,7 @@ export default {
     const usuarioLogueado = ref(false); // Estado de login, se vuelve true al loguearse
 //variable de respuestas predefinidas
     const respuestas = {
-      "hola": "!How you doing¡😊",
+      "hola": "¡How you doing!😊",
       "kaixo": "Idiomas querida",
       "adios": "Que la fuerza te acompañe 🌌",
       "agur": "Ta jan yogurt",
@@ -62,6 +62,8 @@ export default {
       "imbecil": "Lavate esa boca, guarro",
       "gilipollas": "Hazme un favor y muerete🖕",
       "como estas": "Mal, la vida es una mierda",
+      "pistacho": "El color mas feo y mas usado del curso 🤮",
+      "tomate": "Don Orlando o a.k.a David🍅",
     };
 //funcion para iniciar sesion
     const iniciarSesion = () => {

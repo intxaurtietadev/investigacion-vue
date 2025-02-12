@@ -1,4 +1,5 @@
-<template>
+<template> 
+ <div class="main-container">
     <div class="api-container">
       <h1 class = "titulo">Usuarios</h1>
   
@@ -6,9 +7,10 @@
         <img :src="usuario.picture.large">
         <p>{{ usuario.name.first }} {{ usuario.name.last }}</p> <!--muestra esos datos especificos recogidos en el json-->
       </div>
-    </div>
+    </div>  
+</div>
   </template>
-  
+
   <script>
   import { ref, onMounted } from "vue";
   
@@ -34,15 +36,15 @@
   
   <style scoped>
 
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
-  
-  .titulo {
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  width: 100%;
+}
+
+.titulo {
     color: white;
   }
   
@@ -56,9 +58,9 @@
     background-color: #ae4545;
     padding: 20px;
     border-radius: 10px;
+    width: fit-content;
   }
   
-
   .usuario-card {
     border: 1px solid #ccc;
     padding: 10px;
