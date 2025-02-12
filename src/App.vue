@@ -36,7 +36,7 @@ export default {
 
 /* Estilo para el contenido principal */
 .main-content {
-
+padding: 0;
 }
 
 /* Estilo para la sección de ejemplo */
