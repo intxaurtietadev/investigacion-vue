@@ -63,4 +63,5 @@ export default {
   margin-top: 1.5rem;
   display: block;
 }
+
 </style>

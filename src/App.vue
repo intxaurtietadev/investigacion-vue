@@ -34,31 +34,4 @@ export default {
   box-sizing: border-box;
 }
 
-/* Estilo para el contenido principal */
-.main-content {
-
-}
-
-/* Estilo para la sección de ejemplo */
-#ejemplo-cypress {
-  text-align: center;
-  margin-top: 50px;
-}
-
-#ejemplo-cypress h1{
-  text-align: center;
-  margin-top: 8rem;
-}
-
-#ejemplo-cypress button {
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-#ejemplo-cypress span {
-  font-size: 18px;
-  margin-top: 1.5rem;
-  display: block;
-}
 </style>
