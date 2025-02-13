@@ -15,7 +15,7 @@
 </template>
 <script>
 //importamos todos los componentes necesarios
-import { ref } from "vue";
+import { ref, provide } from "vue";
 import ComponenteNay from "../components/ComponenteNay.vue";
 import Nav from "../components/Nav.vue";
 
@@ -36,6 +36,9 @@ export default {
       colorIndex.value = (colorIndex.value + 1) % colores.length; //Itera sobre el string de colores y lo asigna al valor de colorIndex ,suma 1 para cambair al siguiente y utiliza % modulo para volver al primero
       fondoColor.value = colores[colorIndex.value]; //al ser reactivo, cambia cada vez que cambiamos de color
     };
+
+    const mensaje = ref('¡Multiplicate x 0!🖕');
+    provide('mensajeCompartido', mensaje); // Proporciona el mensaje a los descendientes
 
     return {
       titulo,

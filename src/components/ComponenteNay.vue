@@ -20,6 +20,7 @@
         <input v-model="mensajeUsuario" placeholder="Pon algo..." />
         <button @click="enviarMensaje">Enviar</button> <!-- Este v-on activa la funcion de enviarMensaje-->
         <button @click="$emit('cambiar-color')">🌈Haz click🌈</button> <!--este boton realiza un emit que envia al padre para realizar la funcion-->
+        <ComponenteBart />
     </div>
   </div>
   </template>
@@ -27,9 +28,13 @@
 <script>
 // Importamos ref de Vue, que nos permite crear variables reactivas.
 import { ref } from "vue"; //Si cambia el calor de la variable vue actualiza la interfaz.
-
+import ComponenteBart from './ComponenteBart.vue'; //importamos el hijo de este para que aparezca cuando el abuelo cargue la pagina
 export default {
   name: "ComponenteNay", //exportamos el componente.
+
+  components: {
+    ComponenteBart,
+  },//tambien el hijo de este, para el uso de provide/inject.
 
   props: {
     fondoColor: String, // Recibe los valores del color del padre

@@ -19,13 +19,13 @@
     setup() {
       const usuarios = ref([]); // Definir el array de usuarios, una variable reactiva
 
-      onMounted(() => { //es un hook: es una función que te permite ejecutar código en puntos específicos del ciclo de vida del componente.
+      //onMounted(() => { //es un hook: es una función que te permite ejecutar código en puntos específicos del ciclo de vida del componente.
         fetch("https://randomuser.me/api/?results=6")// fetch para obtener los usuarios al cargar el componente
           .then(response => response.json()) //pasamos los datos a un archivo json
           .then(data => {
             usuarios.value = data.results; // actualiza la lista de usuarios
           });
-      });
+      //});
   
       return {
         usuarios
