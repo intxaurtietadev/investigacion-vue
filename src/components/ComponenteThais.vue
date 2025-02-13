@@ -7,13 +7,26 @@
       <p>Nombre completo: {{ nombreCompleto }}</p>
   
       <!-- Directiva v-if -->
-      <p v-if="mostrarMensaje" class="mensaje">{{ mensaje }}</p>
-  
+      <transition name="fade">
+        <p v-if="mostrarMensaje" class="mensaje">{{ mensaje }}</p>
+      </transition>
+            <!-- Botón para cambiar mensaje -->
+            <button @click="cambiarMensaje" class="boton">{{ mensajeBoton}}</button>
+
+
       <!-- Directiva v-for -->
+       <h3>Lista de la compra</h3>
       <ul class="lista">
-        <li v-for="(elemento, indice) in elementos" :key="indice">{{ elemento }}</li>
+        <li v-for="(elemento, indice) in elementos" :key="indice" class="item">
+          {{ elemento }}
+          <button @click="eliminarElemento(indice)" class="btn-delete">Eliminar</button>
+        </li>
       </ul>
-  
+        <!-- Agregar nuevo elemento -->
+         <div class="inputs">
+          <input v-model="nuevoElemento" placeholder="Nuevo elemento" />
+          <button @click="agregarElemento" class="boton">Agregar</button>
+        </div>
       <!-- Inputs reactivos -->
       <div class="inputs">
         <input v-model="nombre" placeholder="Nombre" />
@@ -26,8 +39,6 @@
         <p v-if="resultados.length > 0">Resultados: {{ resultados.join(", ") }}</p>
       </div>
   
-      <!-- Botón para cambiar mensaje -->
-      <button @click="cambiarMensaje" class="boton">Cambiar Mensaje</button>
     </div>
   </template>
   
@@ -42,9 +53,11 @@
       const apellido = ref("");
       const mostrarMensaje = ref(true);
       const mensaje = ref("Este mensaje se muestra condicionalmente.");
-      const elementos = ref(["Elemento 1", "Elemento 2", "Elemento 3"]);
+      const mensajeBoton = ref("Ocultar Mensaje");
+      const elementos = ref([]);
       const terminoBusqueda = ref("");
       const resultados = ref([]);
+      const nuevoElemento = ref(""); // Para el input de nuevo elemento
   
       // Propiedad computada
       const nombreCompleto = computed(() => `${nombre.value} ${apellido.value}`);
@@ -60,9 +73,27 @@
   
       // Función para cambiar el estado del mensaje
       const cambiarMensaje = () => {
+      // Alternar el estado de mostrarMensaje
         mostrarMensaje.value = !mostrarMensaje.value;
+      // Actualizar el texto del botón según el nuevo estado
+        mensajeBoton.value = mostrarMensaje.value ? "Ocultar Mensaje" : "Ver Mensaje";
       };
   
+      //Funcion para agregar elementos a los lis
+      const agregarElemento = () => {
+        console.log("Valor de nuevoElemento:", nuevoElemento.value);
+        // comprobamos que el valor no esté vacio ni sea solo espacio
+        if (nuevoElemento.value.trim()){
+          elementos.value.push(nuevoElemento.value);
+          nuevoElemento.value = ""; //limpiar el input
+        }
+      };
+
+        //Para eliminar un elemento del li
+        const eliminarElemento = (indice) => {
+          elementos.value.splice(indice, 1); //eliminar del array
+        };
+        
       return {
         titulo,
         nombre,
@@ -73,6 +104,11 @@
         elementos,
         terminoBusqueda,
         resultados,
+        cambiarMensaje,
+        agregarElemento,
+        eliminarElemento,
+        nuevoElemento,
+        mensajeBoton,
         cambiarMensaje,
       };
     },
@@ -158,4 +194,28 @@
   .boton:hover {
     background-color: #360c0c;
   }
+
+  .btn-delete {
+  padding: 5px 10px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.btn-delete:hover {
+  background-color: #a71d2a;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
   </style>

@@ -3,11 +3,16 @@ import { defineStore } from "pinia";
 
 export const useCounterStore = defineStore("counter", {
   state: () => ({
-    count: 0, // Estado inicial
+    count: 1, // Estado inicial
   }),
+  getters: {
+    times2(state) {
+      return state.count * 2; // Calcula el doble del contador
+    },
+  },
   actions: {
-    increment() {
-      this.count++; // Incrementa el estado
+    increment(val = 1) {
+      this.count += val; // Incrementa el contador con un valor opcional
     },
   },
 });
