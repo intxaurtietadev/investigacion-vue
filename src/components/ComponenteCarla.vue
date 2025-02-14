@@ -31,29 +31,64 @@
       <button @click="incrementGlobal(5)">Incrementar (+5)</button>
     </section>
 
+    <!-- Ejemplo de reactive -->
+    <section>
+      <h2>Ejemplo de reactive</h2>
+      <p>Nombre: {{ user.name }}</p>
+      <button @click="changeName">Cambiar Nombre</button>
+    </section>
+
+    <!-- Ejemplo de toRefs -->
+    <section>
+      <h2>Ejemplo de toRefs</h2>
+      <p>Nombre: {{ name }}</p>
+      <p>Edad: {{ age }}</p>
+      <button @click="increaseAge">Cambiar Edad</button>
+    </section>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, reactive, toRefs } from "vue";
 import { useCounterStore } from "../stores/counter"; // Importa el store
 
 // Contador con Composition API
 const compositionCount = ref(0);
-
 function incrementComposition() {
   compositionCount.value++;
 }
-
 function resetComposition() {
   compositionCount.value = 0;
 }
+
 // Acceder al store de Pinia
 const counterStore = useCounterStore();
 
 // Método para incrementar el contador global
 function incrementGlobal(val = 1) {
-counterStore.increment(val);
+  counterStore.increment(val);
+}
+
+// Ejemplo de reactive
+const user = reactive({
+  name: "Carla",
+});
+
+function changeName() {
+  user.name = user.name === "Carla" ? "María" : "Carla"; // Alterna entre dos nombres
+}
+
+// Ejemplo de toRefs
+const person = reactive({
+  name: "Juan",
+  age: 28,
+});
+
+// Convertimos 'name' y 'age' en referencias independientes usando toRefs
+const { name, age } = toRefs(person);
+
+function increaseAge() {
+  age.value++; // Solo modificamos la propiedad 'age'
 }
 </script>
 
@@ -88,15 +123,13 @@ export default {
   padding: 20px;
   font-family: Arial, sans-serif;
 }
-
 section {
   margin-bottom: 20px;
   border: 1px solid #ccc;
   padding: 15px;
   border-radius: 5px;
-  background-color:#f8f8f8;
+  background-color: #f8f8f8;
 }
-
 button {
   padding: 10px 15px;
   margin-right: 10px;
@@ -106,8 +139,7 @@ button {
   border-radius: 3px;
   cursor: pointer;
 }
-
 button:hover {
-  background-color: #681717;
+  background-color: #8b0000;
 }
 </style>
